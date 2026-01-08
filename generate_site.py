@@ -247,6 +247,20 @@ def generate_index():
     for pdf_file in lectures:
         generate_pdf_viewer_html(pdf_file, 'lectures')
 
+    # Generate HTML pages for homeworks
+    for hw_file in homeworks:
+        if hw_file.endswith('.java'):
+            generate_code_html(hw_file, 'homeworks')
+        elif hw_file.endswith('.pdf'):
+            generate_pdf_viewer_html(hw_file, 'homeworks')
+
+    # Generate HTML pages for assignments
+    for assignment_file in assignments:
+        if assignment_file.endswith('.java'):
+            generate_code_html(assignment_file, 'assignments')
+        elif assignment_file.endswith('.pdf'):
+            generate_pdf_viewer_html(assignment_file, 'assignments')
+
     # Generate sections HTML
     lectures_html = generate_lectures_section(lectures)
     examples_html = generate_examples_section(examples)
