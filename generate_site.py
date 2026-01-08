@@ -133,12 +133,12 @@ def generate_code_html(java_file, output_folder):
 <body>
     <div class="header">
         <h1>{basename}</h1>
-        <a href="index.html">&larr; Back to Course</a>
+        <a href="../index.html">&larr; Back to Course</a>
     </div>
     <div class="content">
         <div class="file-info">
             <span>Java Source File</span>
-            <a href="{java_file}" download class="download-btn">Download</a>
+            <a href="{basename}" download class="download-btn">Download</a>
         </div>
         <pre><code class="language-java">{code_content}</code></pre>
     </div>
@@ -205,12 +205,12 @@ def generate_pdf_viewer_html(pdf_file, output_folder):
     <div class="header">
         <h1>{name}</h1>
         <div class="header-links">
-            <a href="{pdf_file}" download>Download PDF</a>
-            <a href="index.html">&larr; Back to Course</a>
+            <a href="{basename}" download>Download PDF</a>
+            <a href="../index.html">&larr; Back to Course</a>
         </div>
     </div>
     <div class="pdf-container">
-        <iframe src="{pdf_file}" type="application/pdf"></iframe>
+        <iframe src="{basename}" type="application/pdf"></iframe>
     </div>
 </body>
 </html>'''
@@ -442,7 +442,7 @@ def generate_lectures_section(lectures):
         html_link = lecture.replace('.pdf', '.html')
         rows += f'''
             <tr>
-                <td>Week {i}</td>
+                <td>Module {i}</td>
                 <td><a href="{html_link}">{format_name(basename)}</a></td>
                 <td><span class="badge badge-pdf">PDF</span></td>
             </tr>'''
@@ -456,7 +456,7 @@ def generate_lectures_section(lectures):
             <div class="section-content">
                 <table>
                     <thead>
-                        <tr><th>Week</th><th>Topic</th><th>Format</th></tr>
+                        <tr><th>Module</th><th>Topic</th><th>Format</th></tr>
                     </thead>
                     <tbody>{rows}</tbody>
                 </table>
